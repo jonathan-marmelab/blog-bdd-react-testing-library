@@ -1,0 +1,2 @@
+export const SearchResult = () => null;
+
