@@ -1,22 +1,18 @@
-import { SearchBox, getSearchBox } from "./SearchBox";
-
 export interface SearchResult {
-  // Get the search box.
-  getSearchBox(): SearchBox;
+  // Get the search results
+  getResults(): Promise<string[]>;
 
-  // Get the search results.
-  getResults(): string[];
+  // Get the search error
+  getError(): Promise<string>;
 }
 
 export const getSearchResults = async (): Promise<SearchResult> => {
-  const searchBox = await getSearchBox();
-
   return {
-    getSearchBox() {
-      return searchBox;
-    },
-    getResults() {
+    async getResults() {
       return [];
+    },
+    async getError() {
+      return "";
     },
   };
 };
