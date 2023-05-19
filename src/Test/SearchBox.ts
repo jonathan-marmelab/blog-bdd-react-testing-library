@@ -1,4 +1,4 @@
-interface SearchBox {
+export interface SearchBox {
   // Type a search in the searchbox
   type(search: string): void;
 
