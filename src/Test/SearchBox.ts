@@ -1,11 +1,20 @@
 interface SearchBox {
-  type(search: string): Promise<void>;
-  submit(): Promise<void>;
+  // Type a search in the searchbox
+  type(search: string): void;
+
+  // Submit the search form
+  submit(): void;
+
+  // Get the search box value.
+  getValue(): string;
 }
 
 export const getSearchBox = async (): Promise<SearchBox> => {
   return {
-    async type() {},
-    async submit() {},
+    type() {},
+    submit() {},
+    getValue() {
+      return "";
+    },
   };
 };
