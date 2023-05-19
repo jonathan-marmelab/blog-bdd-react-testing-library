@@ -1,7 +1,7 @@
-import { expect } from "vitest";
-
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+
+export { getSearchBox } from "./SearchBox";
 
 import App from "../App";
 
@@ -11,4 +11,3 @@ export const renderApp = () =>
       <App />
     </MemoryRouter>
   );
-
