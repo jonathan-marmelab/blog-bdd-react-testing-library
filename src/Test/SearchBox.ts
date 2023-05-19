@@ -1,3 +1,6 @@
+import { fireEvent, screen } from "@testing-library/react";
+import { expect } from "vitest";
+
 export interface SearchBox {
   // Type a search in the searchbox
   type(search: string): void;
@@ -10,11 +13,26 @@ export interface SearchBox {
 }
 
 export const getSearchBox = async (): Promise<SearchBox> => {
+  // We ensure that the search box is present.
+  const searchBox: HTMLInputElement = await screen.findByRole("searchbox");
+  expect(searchBox).toBeVisible();
+
+  // We ensure that the search submit button is present.
+  const searchButton: HTMLButtonElement = await screen.findByRole("button", {
+    name: "Search",
+  });
+  expect(searchButton).toBeVisible();
+
   return {
-    type() {},
-    doSearch() {},
+    type(search: string) {
+      fireEvent.change(searchBox, { target: { value: search } });
+    },
+    doSearch(search: string) {
+      fireEvent.change(searchBox, { target: { value: search } });
+      fireEvent.click(searchButton);
+    },
     getValue() {
-      return "";
+      return searchBox.value;
     },
   };
 };
